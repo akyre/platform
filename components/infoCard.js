@@ -15,6 +15,9 @@ const Card = props => {
                 @import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap');
 
                 .card-item {
+                    display: flex;
+                    justify-content: space-between;
+                    flex-direction: column;
                     width: 350px;
                     box-shadow: 0px 0px 25px 0px #ccc;
                 }
@@ -94,9 +97,9 @@ Call History Manager allows you to export calls to excel file. This app can back
             <style jsx>{`
                 .card-container {
                     display: flex;
+                    justify-content: space-between;
                     margin-left: 5%;
                     margin-right: 5%;
-                    justify-content: space-evenly;
                 }
 
                 .main-title {
