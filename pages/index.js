@@ -2,6 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import Nav from '../components/nav'
 import InfoBox from '../components/infobox'
+import Footer from '../components/footer'
 
 const Home = () => (
   <div>
@@ -12,7 +13,20 @@ const Home = () => (
     <Nav name="Home" user={{ name: 'roger' }} />
     <div className="hero">
       <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
+      <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
+      <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
+      <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
+      <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
+      <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
+      <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
+      <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
+      <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
+      <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
+      <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
+      <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
+      <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
     </div>
+    <Footer />
     <style jsx>{`
       .hero {
         width: 100%;
