@@ -2,6 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import Nav from '../components/nav'
 import InfoCard from '../components/infoCard'
+import MeetingCard from '../components/meetingCard'
 
 const Home = () => (
   <div>
@@ -11,10 +12,10 @@ const Home = () => (
     </Head>
 
     <Nav />
-    <InfoCard />
+    <MeetingCard />
 
-    <div className="hero">
-      <h1 className="title">Welcome to Next.js!</h1>
+    <div className="meeting">
+      <h1 className="title">Welcome to Next.js</h1>
       <p className="description">
         To get started, edit <code>pages/index.js</code> and save to reload.
       </p>
