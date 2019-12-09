@@ -3,10 +3,10 @@ import Head from 'next/head'
 import Nav from '../components/nav'
 import Footer from '../components/footer'
 
-const Login = () => {
+const Expert = () => {
   return (
     <div>
-      <Nav pageName="Login"/>
+      <Nav pageName="Choose an Expert"/>
       <Footer />
       <style jsx>{`
 
@@ -15,4 +15,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Expert

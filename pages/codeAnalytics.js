@@ -3,10 +3,10 @@ import Head from 'next/head'
 import Nav from '../components/nav'
 import Footer from '../components/footer'
 
-const Login = () => {
+const CodeAnalytics = () => {
   return (
     <div>
-      <Nav pageName="Login"/>
+      <Nav pageName="Code Analytics"/>
       <Footer />
       <style jsx>{`
 
@@ -15,4 +15,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default CodeAnalytics

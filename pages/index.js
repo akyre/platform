@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Nav from '../components/nav'
 import InfoBox from '../components/infobox'
 import Footer from '../components/footer'
+import InfoCard from '../components/infoCard'
 import TextField from '../components/text-field'
 
 const Home = () => (
@@ -12,6 +13,7 @@ const Home = () => (
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <Nav name="Home" user={{ name: 'roger' }} />
+    <InfoCard/>
     <div className="hero">
       <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
       <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
