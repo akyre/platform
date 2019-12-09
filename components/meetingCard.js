@@ -123,12 +123,12 @@ Call History Manager allows you to export calls to excel file. This app can back
                 .card-container {
                     display: flex;
                     justify-content: space-between;
-                    margin-left: 5%;
-                    margin-right: 5%;
+                    margin: 10px
                 }
 
                 .main-title {
-                    font-size: 80px;
+                    color: #000;
+                    font-size: 20px;
                     font-family: 'Roboto', sans-serif;
                     font-weight: 500;
                     margin-left: 7%;
