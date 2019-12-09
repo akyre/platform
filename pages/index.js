@@ -38,7 +38,7 @@ const Home = () => (
         </a>
       </div>
     </div>
-
+    <Footer />
     <style jsx>{`
       .hero {
         width: 100%;
