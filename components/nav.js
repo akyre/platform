@@ -1,34 +1,77 @@
 import React from 'react'
 import Link from 'next/link'
 
-const Nav = () => (
-  <nav>
-    <div className="image">
-      <img src="logo-brain.svg"/>
-    </div>
-    <div className="nav-bar">
-      <div className="content">
-        <a href="#">Products</a>
-        <a href="#">Partners</a>
-        <a href="#">Community</a>
-        <a href="#">Pricing</a>
-      </div>
-      <div className="content">
-        <a href="#" className="signin">Sign in</a>
-        <a href="#" className="signup">Sign up</a>
-      </div>
-    </div>
+const links = [
+  { href: '/dashboard', label: 'Tableau de bord' },
+  { href: '/main-page', label: 'Choix de l\'expert' },
+  { href: '/settings', label: 'Parametre' },
+  { href: '/history', label: 'Historique' },
+].map(link => {
+  link.key = `nav-link-${link.href}-${link.label}`
+  return link
+})
 
+const Nav = ({ pageName, user }) => (
+  <nav>
+    <div id="main">
+      <Link href="/">
+        <img src="/logo-brain.png" id="logo"></img>
+      </Link>
+      <div id="text">
+        <ul>
+          {links.map(({ key, href, label }) => (
+            <li key={key}>
+              <a href={href}>{label}</a>
+            </li>
+          ))}
+        </ul>
+        {user &&
+          <h4>Talk is cheap show me the code.</h4> ||
+          <h1>{pageName}</h1>
+        }
+      </div>
+    </div>
     <style jsx>{`
+      :global(body) {
+        margin: 0;
+        font-family: -apple-system, Roboto, Avenir Next, Avenir, Helvetica, sans-serif;
+        color: #fff;
+      }
+      #logo {
+        padding: 20px;
+        width: 100px;
+        height: 100px;
+      }
+      #text {
+        width: 100%;
+      }
+      #main {
+        display: flex;
+        padding: 10px;
+        box-shadow: 0px 3px 6px #00000029;
+      }
+      h1 {
+        font-family: Roboto;
+        font-size: 50px;
+      }
+      h4 {
+        font-family: Roboto;
+        font-style: italic;
+        font-weight: 100;
+        font-size: 40px;
+        margin: 0px;
+        padding: 40px;
+      }
       nav {
+        background-color: #1AA7FF;
+        text-align: center;
+      }
+      ul {
+        margin-bottom: 0px;
+        margin-top: 0px;
         display: flex;
         justify-content: space-between;
-        background-color: #1A95FF;
-        color: white;
-        font-family: 'Roboto', sans-serif;
-        font-weight: 300;
-        font-style: italic;
-        height: 200px;
+        flex-grow: 1;
       }
 
       .nav-bar {
@@ -39,50 +82,16 @@ const Nav = () => (
       }
 
       a {
-        display: inline-block;
-        padding: 6px 8px;
-        list-style-type: none;
-        font-size: 17px;
+        color: #fff;
         text-decoration: none;
-        text-align: center;
-        color: white;
+        font-style: italic;
+        font-weight: 300;
+        font-size: 18px;
+        margin-left: 20px;
+        margin-right: 20px;
       }
-
-      a:active {
-        color: black;
-      }
-
-      .login-bar {
-        display: flex;
-      }
-
-      .signin {
-        background-color: #1A95FF;
-        border: 0px solid white;
-      }
-
-      .signup {
-        width: 100px;
-        border-radius: 16px;
-        border: 3px solid white;
-        background-color: #1A95FF;
-      }
-
-      .signup:hover {
-        background-color: white;
-        color: #1A95FF;
-        margin-left: auto;
-        margin-right: auto
-      }
-      .image {
-        display: inline-block;
-        width: 90px;
-        height: 90px;
-      }
-
-      img {
-        width: 100%;
-        height: 100%;
+      a:hover {
+        text-decoration: underline;
       }
    `}</style>
   </nav>
