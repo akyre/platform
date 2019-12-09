@@ -13,7 +13,11 @@ const Footer = () => (
       {list.map(content => (
         <ul>
           <li className="li-title">{content[0]}</li>
-          {content.map(elem => <li className="li-elem">{elem}</li>)}
+          {content.map(function (elem, index) {
+            if (index != 0) {
+              return <li className="li-elem">{elem}</li>;
+            }
+          })}
         </ul>
       ))
       }
