@@ -108,6 +108,7 @@ Call History Manager allows you to export calls to excel file. This app can back
                     font-family: 'Roboto', sans-serif;
                     font-weight: 500;
                     margin-left: 7%;
+                    color: black;
                 }
             `}</style>
         </div>
