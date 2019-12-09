@@ -1,20 +1,23 @@
 import React from 'react'
 
-const Card = ({ message_button = "test", expert_name = "Robert", expert_title = "Swift", meeting_date = "Date", expert_img }) => {
+const Card = ({ expert_name = "Robert Lafondue", expert_title = "Développeur Swift", meeting_date = "Lundi 23 Septembre 2019 - 20h30", expert_img = "/Image_10.png" }) => {
     return (
         <div className="card-item">
-            <div>
-            
+            <div>          
             <div className="expert-image">
-                <img src="/Image_10.png"/>
             </div>
+
                 <h4 className="expert-name">{expert_name}</h4>
                 <h5 className="expert-title">{expert_title}</h5>
                 <h6 className="meeting-date">{meeting_date}</h6>
             </div>
+            
+            <div className="points-button">
+                <img onClick={() => console.log("Perfect")} src="Points.svg"/>
+            </div>
 
-            <div>
-                <button>{message_button}</button>
+            <div className="message-button">
+                <img onClick={() => console.log("it works")} src="Icon_message.svg"/>
             </div>
             <style jsx>{`
                 @import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap');
@@ -28,9 +31,12 @@ const Card = ({ message_button = "test", expert_name = "Robert", expert_title = 
                 }
 
                 .expert-image {
+                    background-image: url(${expert_img});
+                    background-size: 100%;
                     display: block;
                     width: 50px;
                     height: 50px;
+                    border-radius: 50px;
                     margin-left: 10px;
                     margin-right: auto;
                     margin-top: 10px;
@@ -38,13 +44,14 @@ const Card = ({ message_button = "test", expert_name = "Robert", expert_title = 
 
                 .expert-name {
                     text-align:
-                    font-size: 24px;
+                    font-size: 30px;
                     font-family: 'Roboto', sans-serif;
                     font-weight: 300;
-                    font-style: 'Roboto', sans-serif;
+                    font-style: italic;
+                    color: #FDFDF6;
                     margin-left: 80px;
                     margin-right: auto;
-                    margin-bottom: 10px;
+                    margin-top: -50px;
                 }
                 .expert-title {
                     text-align:
@@ -52,32 +59,44 @@ const Card = ({ message_button = "test", expert_name = "Robert", expert_title = 
                     font-family: 'Roboto', sans-serif;
                     font-weight: 300;
                     font-style: 'Roboto', sans-serif;
+                    color: #FDFDF6;
                     margin-left: 80px;
                     margin-right: auto;
                     margin-bottom: 10px;
                 }
 
-                button {
-                    width: 50px;
-                    height: 50px;
-                    border-radius: 16px;
-                    border: 3px solid #626262;
-                    background-color: white;
+                .meeting-date {
+                    text-align:
+                    font-size: 24px;
+                    font-family: 'Roboto', sans-serif;
+                    font-weight: 300;
+                    font-style: italic;
+                    color: #FDFDF6;
+                    margin-left: 80px;
+                    margin-right: auto;
+                    margin-top: -50px;
+                }
+
+                .points-button {
+                    width: 30px;
+                    height: 30px;
                     color: #626262;
-                    display: inline-block;
-                    text-decoration: none;
                     font-size: 20px;
                     display: block;
                     margin-left: auto;
-                    margin-right: auto;
-                    margin-bottom: 10px;
+                    margin-right: -95px;
+                    margin-top: 5px;
                 }
 
-                button:hover {
-                    background-color: #626262;
-                    color: white;
+                .message-button {
+                    width: 50px;
+                    height: 50px;
+                    color: #626262;
+                    font-size: 20px;
+                    display: block;
                     margin-left: auto;
-                    margin-right: auto;
+                    margin-right: 15px;
+                    margin-top: 45px;
                 }
 
                 img {
