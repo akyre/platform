@@ -3,35 +3,37 @@ import React from 'react'
 const Card = ({ message_button = "test", expert_name = "Robert", expert_title = "Swift", meeting_date = "Date", expert_img }) => {
     return (
         <div className="card-item">
-            <h4 className="expert-name">{expert_name}</h4>
-            <h5 className="expert-title">{expert_title}</h5>
-            <h6 className="meeting-date">{meeting_date}</h6>
+            <div>
             
-            <div className="image">
-                <img src="../Image10.png"/>
-
+            <div className="expert-image">
+                <img src="/Image_10.png"/>
+            </div>
+                <h4 className="expert-name">{expert_name}</h4>
+                <h5 className="expert-title">{expert_title}</h5>
+                <h6 className="meeting-date">{meeting_date}</h6>
             </div>
 
-            <button>{message_button}</button>
+            <div>
+                <button>{message_button}</button>
+            </div>
             <style jsx>{`
                 @import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap');
 
                 .card-item {
-                    display: flex;
-                    justify-content: space-between;
-                    flex-direction: column;
+                    display: flex;                  
                     background-color: #1A95FF;
                     border-radius: 16px;
                     width: 350px;
-                    box-shadow: 0px 0px 25px 0px #ccc;
+                    height: 100px;
                 }
 
-                .title {
-                    text-align: center;
-                    font-size: 30px;
-                    font-family: 'Roboto', sans-serif;
-                    font-weight: 300;
-                    font-style: italic;
+                .expert-image {
+                    display: block;
+                    width: 50px;
+                    height: 50px;
+                    margin-left: 10px;
+                    margin-right: auto;
+                    margin-top: 10px;
                 }
 
                 .expert-name {
@@ -40,7 +42,7 @@ const Card = ({ message_button = "test", expert_name = "Robert", expert_title = 
                     font-family: 'Roboto', sans-serif;
                     font-weight: 300;
                     font-style: 'Roboto', sans-serif;
-                    margin-left: 15px;
+                    margin-left: 80px;
                     margin-right: auto;
                     margin-bottom: 10px;
                 }
@@ -50,13 +52,13 @@ const Card = ({ message_button = "test", expert_name = "Robert", expert_title = 
                     font-family: 'Roboto', sans-serif;
                     font-weight: 300;
                     font-style: 'Roboto', sans-serif;
-                    margin-left: 15px;
+                    margin-left: 80px;
                     margin-right: auto;
                     margin-bottom: 10px;
                 }
 
                 button {
-                    width: 200px;
+                    width: 50px;
                     height: 50px;
                     border-radius: 16px;
                     border: 3px solid #626262;
@@ -78,27 +80,12 @@ const Card = ({ message_button = "test", expert_name = "Robert", expert_title = 
                     margin-right: auto;
                 }
 
-                .image {
-                    display: block;
-                    width: 100px;
-                    height: 00px;
-                    margin-left: auto;
-                    margin-right: auto;
-                }
-
                 img {
                     width: 100%;
                     height: 100%;
                 }
 
-                p {
-                    text-align: center;
-                    font-size: 15px;
-                    font-family: 'Roboto', sans-serif;
-                    font-weight: 300;
-                    margin-left: 30px;
-                    margin-right: 30px;
-                }
+
             `}</style>
         </div>
     )
