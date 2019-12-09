@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Nav from '../components/nav'
 import InfoBox from '../components/infobox'
 import Footer from '../components/footer'
+import TextField from '../components/text-field'
 
 const Home = () => (
   <div>
@@ -25,6 +26,12 @@ const Home = () => (
       <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
       <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
       <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
+      <form>
+        <TextField label={'username'} placeholder='email@mail.fr' />
+        <TextField label={'password'} type='password' placeholder='password' />
+        <TextField label placeholder='Flux' />
+        <TextField label={'flix'} />
+      </form>
     </div>
     <Footer />
     <style jsx>{`
