@@ -12,10 +12,10 @@ const Footer = () => (
     <div id="content">
       {list.map(content => (
         <ul>
-          <li className="li-title">{content[0]}</li>
+          <li key={'footer-key' + content[0]} className="li-title">{content[0]}</li>
           {content.map(function (elem, index) {
             if (index != 0) {
-              return <li className="li-elem">{elem}</li>;
+              return <li key={'footer-key' + elem} className="li-elem">{elem}</li>;
             }
           })}
         </ul>
