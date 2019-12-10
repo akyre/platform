@@ -11,7 +11,7 @@ const MeetingList = ({ meetings }) => {
         #meetings {
           display: flex;
           flex-direction: column;
-          max-height: 500px;
+          max-height: 650px;
           overflow-y: scroll;
         }
 
@@ -20,7 +20,6 @@ const MeetingList = ({ meetings }) => {
           background: #fff;
           box-shadow: 0px 0px 15px #00000029;
           padding: 20px;
-          width: 90%;
           border-radius: 25px;
         }
 

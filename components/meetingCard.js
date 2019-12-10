@@ -113,7 +113,6 @@ const Card = ({ expert_name = "Robert Lafondue", expert_title = "Développeur Sw
 const MeetingCard = () => {
     return (
         <div className="services">
-            <h3 className="main-title">Mes rendez-vous</h3>
             <div className="card-container">
                 <Card className="card" title="Analyse" button="En savoir plus"> This is the content of the card, Call History Manager keep your call history forever and list them category wise for ease of access. Quick and advanced search options helps you to easily access data you are looking for. 
 

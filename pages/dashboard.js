@@ -6,6 +6,7 @@ import Footer from '../components/footer'
 import TextField from '../components/text-field'
 import MeetingsList from '../components/meeting-list'
 import History from '../components/history'
+import Button from '../components/button'
 
 const PersonalInfo = ({ user }) => (
   <div id="content">
@@ -40,22 +41,90 @@ const PersonalInfo = ({ user }) => (
   </div>
 )
 
-const Settings = () => {
+const Settings = ({ user }) => {
   return (
     <div id='content'>
-      <div>Billing</div>
-      <div>Billing</div>
-      <div>Billing</div>
-      <div>Billing</div>
-      <div>Billing</div>
-      <div>Billing</div>
+      <div id='title'>Informations</div>
+      <div id='conteneur'>
+        <h2>Information personelle</h2>
+        <span className='label-data'>
+          <label>Email: </label>
+          <p> {user.email}</p>
+        </span>
+        <span className='label-data'>
+          <label>Name: </label>
+          <p> {user.email}</p>
+        </span>
+        <span className='label-data'>
+          <label>Pseudo: </label>
+          <p> {user.email}</p>
+        </span>
+        <span className='label-data'>
+          <label>Phone: </label>
+          <p> {user.email}</p>
+        </span>
+        <h2>Information de paiement</h2>
+        <span className='label-data'>
+          <label>Numero de carte: </label>
+          <p> 8329-****-****-****-**23</p>
+        </span>
+        <span className='label-data'>
+          <label>Credit: </label>
+          <span className='billing'>
+            <p> 💵 123$</p>
+            <Button height='100px' p={0}>
+              Retirer ses credits
+            </Button>
+          </span>
+        </span>
+      </div>
       <style jsx>{`
+        .billing {
+          display: inline-flex;
+        }
+
+        .label-data {
+          display: flex;
+          align-items: center;
+        }
+
+        label {
+          font-size: 20px;
+        }
+
+        h2 {
+          text-decoration: underline;
+        }
+  
+        .billing {
+          display: flex;
+          justify-content: space-between;
+        }
+
+        #title {
+          color: #000;
+          font-weight: bold;
+          font-size: 40px;
+        }
+        
+        #conteneur {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+        }
+        
+        p {
+          margin-left: 10px;
+          font-weight: lighter;
+          font-size: 25px;
+        }
+  
         #content {
           color: #000;
           background: #fff;
           box-shadow: 0px 0px 15px #00000029;
           padding: 20px;
-          width: 90%;
+          width: 100%;
           border-radius: 25px;
           margin-left: 10px;
         }
@@ -71,7 +140,7 @@ const Dashboard = () => (
       <PersonalInfo user={{ image: 'https://picsum.photos/200', name: 'Alexandre Fourcat' }} />
       <div id='range-1'>
         <MeetingsList meetings={[1, 2, 3, 4, 5, 6, 7, 8, 9]} />
-        <Settings />
+        <Settings user={{ email: 'alexandre.fourcat@epitech.eu' }} />
       </div>
       <History history={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]} />
     </div>

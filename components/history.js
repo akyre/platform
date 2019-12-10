@@ -15,6 +15,7 @@ const History = ({ history }) => {
         }
 
         #content {
+          box-sizing: border-box;
           background: #fff;
           box-shadow: 0px 0px 15px #00000029;
           padding: 20px;
