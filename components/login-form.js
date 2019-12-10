@@ -19,7 +19,6 @@ const LoginForm = ({ value, label, onChange, type = 'text', width = '100%', plac
           flex-direction: column;
         }
         label {
-          margin-left: 5%;
           margin-bottom: 5px;
           font-size: 15px;
           font-weight: bold;
@@ -27,8 +26,6 @@ const LoginForm = ({ value, label, onChange, type = 'text', width = '100%', plac
         input {
           padding-right: 20px;
           padding-left: 20px;
-          margin-left: 5%;
-          margin-right: 5%;
           font-size: inherit;
           border: 0px;
           box-shadow: 0px 0px 15px #00000029;

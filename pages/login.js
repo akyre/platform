@@ -2,6 +2,7 @@ import React from 'react'
 // import Head from 'next/head'
 import Nav from '../components/nav'
 // import TextField from '../components/text-field'
+import ImagedButton from '../components/imaged-button'
 import Footer from '../components/footer'
 import LoginForm from '../components/login-form'
 
@@ -9,7 +10,7 @@ const Login = () => {
   return (
     <div className="loginPage">
 
-      <Nav />
+      <Nav pageName="Login"/>
 
       <div className="loginForm">
 
@@ -17,20 +18,11 @@ const Login = () => {
           <h2 className="signInWith">
             Sign in with:
           </h2>
-          <div className="sign1">
-            <div className="google">
-              <img className="google" src="btn_google_light_normal_ios.svg" width="100%"/>
-             </div>
-            <h2 style={{color:"#333", 'font-size': "18px"}}>Google</h2>
-          </div>
-          <div className="sign2">
-            <div className="github">
-              <img className="github" src="GitHub-Mark-120px-plus.png" width="100%"/>
-            </div>
-            <h2 style={{color:"#333", 'font-size': "18px"}}>Github</h2>
+          <div id="oauth-sign">
+            <ImagedButton image="/btn_google_light_normal_ios.svg">Sign in with Google</ImagedButton>
+            <ImagedButton image="/Github-Mark-120px-plus.png">Sign in with Github</ImagedButton>
           </div>
         </div>
-
         <div>
             <div className="creation">
               <h1 className="creation-font">Création du compte</h1>
@@ -72,15 +64,15 @@ const Login = () => {
         }
         .loginPage {
           width:100%;
-          background:white;
+          background-color: white;
         }
         .loginForm {
           margin-top:5%;
           margin-bottom:5%;
           margin-left: 20%;
           margin-right: 20%;
-          background:#F0F0F0;
           border-radius: 25px;
+          box-shadow: 0px 0px 15px #00000029;
         }
         .creation {
           width: 50%;
@@ -117,34 +109,6 @@ const Login = () => {
         a.existing-account-font:hover {
           text-decoration: underline;
         }
-        .sign1 {
-          width: 50%;
-          max-width: 50%;
-          display:flex;
-          flex-direction: row;
-          display: inline-block;
-          text-align:center;
-        }
-        .google {
-          cursor: pointer;
-          width:60px;
-          height:60px;
-          display: inline-block;
-        }
-        .sign2 {
-          width: 50%;
-          max-width: 50%;
-          display:flex;
-          flex-direction: row;
-          display: inline-block;
-          text-align:center;
-        }
-        .github {
-          cursor: pointer;
-          width:60px;
-          height:60px;
-          display: inline-block;
-        }
         #button-container {
           text-align:center;
         }
@@ -166,6 +130,17 @@ const Login = () => {
         }
         .button:hover {
           box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+
+        #oauth-sign {
+          margin-left: 5%;
+          display: flex;
+          flex-direction: row;
+        }
+
+        form {
+          margin-left: 5%;
+          margin-right: 5%;
         }
       `}</style>
     </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TextField = ({ value, label, onChange, type = 'text', width = '80%', placeholder }) => {
+const TextField = ({ value, label, onChange, type = 'text', width = '100%', placeholder }) => {
   return (
     <div id="box">
       {label &&
