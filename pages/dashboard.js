@@ -4,7 +4,7 @@ import Nav from '../components/nav'
 import InfoBox from '../components/infobox'
 import Footer from '../components/footer'
 import TextField from '../components/text-field'
-import MeetingsList from '../components/meeting-list'
+import MeetingList from '../components/meeting-list'
 import History from '../components/history'
 import Button from '../components/button'
 
@@ -140,7 +140,7 @@ const Dashboard = () => (
     <div id='content'>
       <PersonalInfo user={{ image: 'https://picsum.photos/200', name: 'Alexandre Fourcat' }} />
       <div id='range-1'>
-        <MeetingsList meetings={[1, 2, 3, 4, 5, 6, 7, 8, 9]} />
+        <MeetingList meetings={[1, 2, 3, 4, 5, 6, 7, 8, 9]} />
         <Settings user={{ email: 'alexandre.fourcat@epitech.eu' }} />
       </div>
       <History history={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]} />

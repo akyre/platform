@@ -22,6 +22,7 @@ const History = ({ history }) => {
           width: 90%;
           border-radius: 25px;
           margin: 20px;
+          overflow: hidden;
         }
 
         #title {

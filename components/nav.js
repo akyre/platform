@@ -11,6 +11,7 @@ const links = [
   { href: '/', label: 'Partners', sublinks: [] },
   { href: '/community', label: 'Community', sublinks: [] },
   { href: '/pricing', label: 'Pricing', sublinks: [] },
+  { href: '/dashboard', label: 'Dashboard', sublinks: [] },
 ]
 
 const Nav = ({ pageName, user }) => (
