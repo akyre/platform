@@ -2,58 +2,139 @@ import React from 'react'
 import Link from 'next/link'
 
 const links = [
-  { href: '/dashboard', label: 'Tableau de bord' },
-  { href: '/main-page', label: 'Choix de l\'expert' },
-  { href: '/settings', label: 'Parametre' },
-  { href: '/history', label: 'Historique' },
-].map(link => {
-  link.key = `nav-link-${link.href}-${link.label}`
-  return link
-})
+  { href: '#', label: 'Products', sublinks: [
+      { href: '/codeReview', label: 'Code Review'},
+      { href: '/peerCoding', label: 'Peer Coding'},
+      { href: '/codeBenchmarking', label: 'Code Benchmarking'},
+      { href: '/codeAnalytics', label: 'Code Analytics'},
+  ]},
+  { href: '/', label: 'Partners', sublinks: [] },
+  { href: '/community', label: 'Community', sublinks: [] },
+  { href: '/pricing', label: 'Pricing', sublinks: [] },
+]
 
 const Nav = ({ pageName, user }) => (
   <nav>
     <div id="main">
-      <Link href="/">
-        <img src="/logo-brain.png" id="logo"></img>
-      </Link>
-      <div id="text">
-        <ul>
-          {links.map(({ key, href, label }) => (
-            <li key={key}>
-              <a href={href}>{label}</a>
-            </li>
-          ))}
-        </ul>
+      <div id="nav-bar">
+        <Link href="/">
+          <img src="/logo-brain.png" id="logo"></img>
+        </Link>
+        <div id="text">
+          <ul>
+            {links.map(function (elem) {
+              if (elem.sublinks == 0) {
+                return (
+                  <li key={'nav-list' + elem.label + elem.href}>
+                    <a className="field-nav" href={elem.href}>{elem.label}</a>
+                  </li>
+                )
+              } else {
+                return (
+                <li key={'nav-list' + elem.label + elem.href} className="dropdown">
+                  <button className="drop-btn">{elem.label}</button>
+                  <div className="dropdown-content"> {
+                    elem.sublinks.map(elem => (
+                      <a key={'nav-link' + elem.label + elem.href} href={elem.href}>{elem.label}</a>
+                    ))
+                  }
+                  </div>
+                </li>
+                )
+              }
+            })}
+          </ul>
+          <ul id="connection">
+            <li><a className="connect" id="sign-in" href="/login">Sign in</a></li>
+            <li><a className="connect" id="sign-up" href="/register">Sign up</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="title">
         {user &&
-          <h4>Talk is cheap show me the code.</h4> ||
+          <div>
+            <h4 id="main-title">Talk is cheap show me the code.</h4>
+            <p id="sub-title">(cf. Linus Torvald)</p>
+          </div> ||
           <h1>{pageName}</h1>
         }
       </div>
     </div>
     <style jsx>{`
+      @import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap');
+      
       :global(body) {
         margin: 0;
         font-family: -apple-system, Roboto, Avenir Next, Avenir, Helvetica, sans-serif;
         color: #fff;
       }
+
       #logo {
         padding: 20px;
         width: 100px;
         height: 100px;
       }
-      #text {
-        width: 100%;
-      }
+
       #main {
         display: flex;
+        flex-direction: column;
         padding: 10px;
         box-shadow: 0px 3px 6px #00000029;
       }
+
+      #nav-bar {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-left: 5%;
+      }
+
+      #text {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 30px;
+      }
+
+      #connection {
+        width: 15%;
+        padding-left: 0%;
+        justify-content: space-around;
+      }
+
+      .connect {
+        width: 100px;
+        height: 100%;
+        line-height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        color: white;
+
+      }
+
+      #sign-up {
+        border-radius: 16px;
+        border: 3px solid white;
+      }
+
+      #sign-up:hover {
+        color: #1A95FF;
+        background-color: white;
+      }
+
+      #sign-in:hover {
+        text-decoration: underline;
+      }
+
       h1 {
         font-family: Roboto;
+        font-weight: 400;
         font-size: 50px;
       }
+
       h4 {
         font-family: Roboto;
         font-style: italic;
@@ -62,25 +143,24 @@ const Nav = ({ pageName, user }) => (
         margin: 0px;
         padding: 40px;
       }
+
       nav {
         background-color: #1AA7FF;
         text-align: center;
       }
+
       ul {
         margin-bottom: 0px;
         margin-top: 0px;
         display: flex;
-        justify-content: space-between;
-        flex-grow: 1;
+        list-style: none;
       }
-      nav > ul {
-        padding: 4px 16px;
-      }
+
       li {
-        display: flex;
-        padding: 6px 8px;
+        height: 40px;
       }
-      a {
+
+      .field-nav {
         color: #fff;
         text-decoration: none;
         font-style: italic;
@@ -88,11 +168,100 @@ const Nav = ({ pageName, user }) => (
         font-size: 18px;
         margin-left: 20px;
         margin-right: 20px;
+        height: 100%;
+        line-height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
-      a:hover {
+
+      .field-nav:hover {
         text-decoration: underline;
       }
-    `}</style>
+
+      #main-title {
+        padding-top: 0%;
+        padding-bottom: 0%;
+      }
+
+      #sub-title {
+        margin-top: 0%;
+        margin-left: 40%;
+        font-weight: 100;
+        font-style: italic;
+      }
+
+      .navbar a {
+        float: left;
+        font-size: 16px;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+      .dropdown {
+        float: left;
+        overflow: hidden;
+      }
+
+      .drop-btn {
+        color: #fff;
+        text-decoration: none;
+        font-style: italic;
+        font-weight: 300;
+        font-size: 18px;
+        margin-left: 20px;
+        margin-right: 20px;
+        height: 100%;
+        line-height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .drop-btn:hover {
+        text-decoration: underline;
+      }
+
+      .dropdown .drop-btn {
+        border: none;
+        outline: none;
+        color: white;
+        background-color: inherit;
+        font-family: inherit;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+      }
+
+      .dropdown-content a {
+        float: none;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+      }
+
+      .dropdown-content a:hover {
+        background-color: #ddd;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      .dropdown:hover .dropbtn {
+        background-color: red;
+      }
+   `}</style>
   </nav>
 )
 

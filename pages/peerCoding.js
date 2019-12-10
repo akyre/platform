@@ -3,10 +3,10 @@ import Head from 'next/head'
 import Nav from '../components/nav'
 import Footer from '../components/footer'
 
-const Login = () => {
+const PeerCoding = () => {
   return (
     <div>
-      <Nav pageName="Login"/>
+      <Nav pageName="Peer Coding"/>
       <p>This page is under construction...</p>
       <Footer />
       <style jsx>{`
@@ -19,4 +19,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default PeerCoding

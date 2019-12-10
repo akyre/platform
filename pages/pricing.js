@@ -3,10 +3,10 @@ import Head from 'next/head'
 import Nav from '../components/nav'
 import Footer from '../components/footer'
 
-const Login = () => {
+const Pricing = () => {
   return (
     <div>
-      <Nav pageName="Login"/>
+      <Nav pageName="Pricing"/>
       <p>This page is under construction...</p>
       <Footer />
       <style jsx>{`
@@ -19,4 +19,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Pricing
