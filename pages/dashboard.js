@@ -17,6 +17,7 @@ const PersonalInfo = ({ user }) => (
         align-self: start;
         display: flex;
         align-items: center;
+        margin-left: 5%;
       }
       p {
         margin-left: 20px;
