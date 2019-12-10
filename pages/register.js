@@ -7,9 +7,13 @@ const Register = () => {
   return (
     <div>
       <Nav pageName="Register"/>
+      <p>This page is under construction...</p>
       <Footer />
       <style jsx>{`
-
+        p {
+            color: black;
+            text-align: center;
+        }
       `}</style>
     </div>
   )

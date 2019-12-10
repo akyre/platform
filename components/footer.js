@@ -15,7 +15,11 @@ const Footer = () => (
           <li key={'footer-key' + content[0]} className="li-title">{content[0]}</li>
           {content.map(function (elem, index) {
             if (index != 0) {
-              return <li key={'footer-key' + elem} className="li-elem">{elem}</li>;
+              return (
+              <li key={'footer-key' + elem} className="li-elem">
+                <a>{elem}</a>
+              </li>
+              );
             }
           })}
         </ul>
@@ -69,6 +73,14 @@ const Footer = () => (
         text-align: center;
         height: 150px;
         align-items: center;
+      }
+
+      a {
+        text-style: none;
+      }
+
+      a:hover {
+        font-weight: 300;
       }
     `}</style>
   </div>

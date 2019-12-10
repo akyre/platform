@@ -7,9 +7,13 @@ const CodeAnalytics = () => {
   return (
     <div>
       <Nav pageName="Code Analytics"/>
+      <p>This page is under construction...</p>
       <Footer />
       <style jsx>{`
-
+        p {
+            color: black;
+            text-align: center;
+        }
       `}</style>
     </div>
   )

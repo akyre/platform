@@ -6,10 +6,14 @@ import Footer from '../components/footer'
 const CodeReview = () => {
   return (
     <div>
-      <Nav pageName="CodeReview"/>
+      <Nav pageName="Code Review"/>
+      <p>This page is under construction...</p>
       <Footer />
       <style jsx>{`
-
+        p {
+            color: black;
+            text-align: center;
+        }
       `}</style>
     </div>
   )

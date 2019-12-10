@@ -7,9 +7,13 @@ const Login = () => {
   return (
     <div>
       <Nav pageName="Login"/>
+      <p>This page is under construction...</p>
       <Footer />
       <style jsx>{`
-
+        p {
+            color: black;
+            text-align: center;
+        }
       `}</style>
     </div>
   )

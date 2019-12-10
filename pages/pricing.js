@@ -7,9 +7,13 @@ const Pricing = () => {
   return (
     <div>
       <Nav pageName="Pricing"/>
+      <p>This page is under construction...</p>
       <Footer />
       <style jsx>{`
-
+        p {
+            color: black;
+            text-align: center;
+        }
       `}</style>
     </div>
   )
