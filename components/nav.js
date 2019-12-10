@@ -25,17 +25,17 @@ const Nav = ({ pageName, user }) => (
             {links.map(function (elem) {
               if (elem.sublinks == 0) {
                 return (
-                  <li key={'nav-link' + elem.label + elem.href}>
+                  <li key={'nav-list' + elem.label + elem.href}>
                     <a className="field-nav" href={elem.href}>{elem.label}</a>
                   </li>
                 )
               } else {
                 return (
-                <li key={'nav-link' + elem.label + elem.href} className="dropdown">
+                <li key={'nav-list' + elem.label + elem.href} className="dropdown">
                   <button className="drop-btn">{elem.label}</button>
                   <div className="dropdown-content"> {
                     elem.sublinks.map(elem => (
-                      <a href={elem.href}>{elem.label}</a>
+                      <a key={'nav-link' + elem.label + elem.href} href={elem.href}>{elem.label}</a>
                     ))
                   }
                   </div>
