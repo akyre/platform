@@ -6,6 +6,7 @@ import Footer from '../components/footer'
 import InfoCard from '../components/infoCard'
 import TextField from '../components/text-field'
 import Expert from './expert'
+import SubTest from "../components/subTest";
 
 const Home = () => (
   <div>
