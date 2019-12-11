@@ -31,7 +31,6 @@ const Home = () => (
       <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
       <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
     </div>
-      <SubTest/>
     <Footer />
     <style jsx>{`
       .hero {
