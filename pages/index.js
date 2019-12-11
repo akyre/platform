@@ -6,6 +6,7 @@ import Footer from '../components/footer'
 import InfoCard from '../components/infoCard'
 import TextField from '../components/text-field'
 import Expert from './expert'
+import SubTest from "../components/subTest";
 
 const Home = () => (
   <div>
@@ -30,6 +31,7 @@ const Home = () => (
       <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
       <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
     </div>
+      <SubTest/>
     <Footer />
     <style jsx>{`
       .hero {
