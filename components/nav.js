@@ -12,6 +12,7 @@ const links = [
   { href: '/community', label: 'Community', sublinks: [] },
   { href: '/pricing', label: 'Pricing', sublinks: [] },
   { href: '/dashboard', label: 'Dashboard', sublinks: [] },
+  { href: '/expert', label: 'Expert', sublinks: [] },
 ]
 
 const Nav = ({ pageName, user }) => (
@@ -134,6 +135,8 @@ const Nav = ({ pageName, user }) => (
         font-family: Roboto;
         font-weight: 400;
         font-size: 50px;
+        margin-top: 10px;
+        margin-bottom: 10px;
       }
 
       h4 {

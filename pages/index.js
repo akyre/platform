@@ -5,7 +5,6 @@ import InfoBox from '../components/infobox'
 import Footer from '../components/footer'
 import InfoCard from '../components/infoCard'
 import TextField from '../components/text-field'
-import DevList from '../components/dev_list'
 import Expert from './expert'
 
 const Home = () => (
@@ -15,22 +14,6 @@ const Home = () => (
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <Nav name="Home" user={{ name: 'roger' }} />
-    <DevList devs={[
-      {name: "Quentin", price: "14", note: "4"},
-      {name: "Quentin", price: "14", note: "4"},
-      {name: "Quentin", price: "14", note: "4"},
-      {name: "Quentin", price: "14", note: "4"},
-      {name: "Quentin", price: "14", note: "4"},
-      {name: "Quentin", price: "14", note: "4"},
-      ]}></DevList>
-    <DevList devs={[
-      {name: "Quentin", price: "14", note: "4"},
-      {name: "Quentin", price: "14", note: "4"},
-      {name: "Quentin", price: "14", note: "4"},
-      {name: "Quentin", price: "14", note: "4"},
-      {name: "Quentin", price: "14", note: "4"},
-      {name: "Quentin", price: "14", note: "4"},
-      ]}></DevList>
     <InfoCard/>
     <div className="hero">
       <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
@@ -46,12 +29,6 @@ const Home = () => (
       <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
       <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
       <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
-      <form>
-        <TextField label={'username'} placeholder='email@mail.fr' />
-        <TextField label={'password'} type='password' placeholder='password' />
-        <TextField label placeholder='Flux' />
-        <TextField label={'flix'} />
-      </form>
     </div>
     <Footer />
     <style jsx>{`

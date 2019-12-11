@@ -1,12 +1,10 @@
 import React from "react";
-import HorizontalScroll from 'react-scroll-horizontal'
 import ExpertCard from "./expert_card";
-import MeetingCard from "./meetingCard";
 
-const DevList = ({devs}) => {
+const DevList = ({title, devs}) => {
     return (
         <div id="content">
-            <p id="title">Title</p>
+            <h5 id="title">{title}</h5>
             <div id="dev-list">
                 {devs.map((value, index) => {
                     return (
@@ -36,6 +34,8 @@ const DevList = ({devs}) => {
                 font-size: 30px;
                 color: black;
                 margin-left: 20px;
+                margin-top: 20px;
+                margin-bottom: 20px;
             }
             
             .card {

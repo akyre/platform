@@ -25,6 +25,7 @@ const ImagedButton = ({ onClick, color = 'black', background = 'white', image, m
         box-shadow: 0px 0px 15px #00000029;
         height: 50px;
       }
+
       button:hover {
         background: ${color};
         color: ${background || 'white'};

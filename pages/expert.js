@@ -1,19 +1,53 @@
 import React from 'react'
-import Head from 'next/head'
 import Nav from '../components/nav'
 import Footer from '../components/footer'
+import DevList from '../components/dev_list'
 
 const Expert = () => {
   return (
     <div>
       <Nav pageName="Choose an Expert"/>
-      <p>This page is under construction...</p>
-      <Footer />
+        <div className="devlist">
+            <DevList title="Développeurs logiciels" devs={[
+            {name: "Paul", price: "14", note: "4"},
+            {name: "Paul", price: "14", note: "4"},
+            {name: "Paul", price: "14", note: "4"},
+            {name: "Paul", price: "14", note: "4"},
+            {name: "Paul", price: "14", note: "4"},
+            {name: "Paul", price: "14", note: "4"},
+            ]}>
+            </DevList>
+        </div>
+        <div className="devlist">
+            <DevList title="Développeurs logiciels" devs={[
+            {name: "Paul", price: "14", note: "4"},
+            {name: "Paul", price: "14", note: "4"},
+            {name: "Paul", price: "14", note: "4"},
+            {name: "Paul", price: "14", note: "4"},
+            {name: "Paul", price: "14", note: "4"},
+            {name: "Paul", price: "14", note: "4"},
+            ]}>
+            </DevList>
+        </div>
+        <div className="devlist">
+            <DevList title="Développeurs logiciels" devs={[
+            {name: "Paul", price: "14", note: "4"},
+            {name: "Paul", price: "14", note: "4"},
+            {name: "Paul", price: "14", note: "4"},
+            {name: "Paul", price: "14", note: "4"},
+            {name: "Paul", price: "14", note: "4"},
+            {name: "Paul", price: "14", note: "4"},
+            ]}>
+            </DevList>
+        </div>
+        <Footer />
       <style jsx>{`
-        p {
-            color: black;
-            text-align: center;
+
+        .devlist {
+            margin-top: 20px;
+            margin-bottom: 20px;
         }
+
       `}</style>
     </div>
   )
