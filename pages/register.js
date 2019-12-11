@@ -3,11 +3,7 @@ import Nav from '../components/nav'
 import TextField from '../components/text-field'
 import ImagedButton from '../components/imaged-button'
 import Footer from '../components/footer'
-import { useMutation } from '@apollo/react-hooks'
-import gql from 'graphql-tag'
-
-const ADD_USER = gql`
-`
+import {withApollo} from "../lib/apollo";
 
 const Register = () => {
   return (
@@ -148,7 +144,7 @@ const Register = () => {
       `}</style>
     </div>
   )
-}
+};
 
-export default Register
+export default withApollo(Register)
 
