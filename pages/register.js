@@ -4,8 +4,34 @@ import TextField from '../components/text-field'
 import ImagedButton from '../components/imaged-button'
 import Footer from '../components/footer'
 import {withApollo} from "../lib/apollo";
+import { useMutation } from '@apollo/react-hooks'
+import gql from 'graphql-tag'
+import Router from 'next/router'
+import redirect from '../lib/redirect'
 
-const Register = () => {
+const ADD_USER = gql`
+  mutation SignUp($email: String!, $name: String!, $surname: String!, $password: String!, $phone: String!) {
+    signup(data: {email: $email, name: $name, surname: $surname, password: $password, phone: $phone}) {
+      token
+    }
+  }
+`
+
+const Register = (props) => {
+  let input = {email: "", firstname: "", lastname: "", password: "", phone: ""};
+  const [signup, {data, loading, error}] = useMutation(ADD_USER);
+
+  const onSubmit = e => {
+    e.preventDefault();
+    const res = signup({variables: {
+      email: input.email.value,
+      name: input.firstname.value,
+      surname: input.lastname.value,
+      password: input.password.value,
+      phone: input.phone.value}});
+    input = {email: "", firstname: "", lastname: "", password: "", phone: ""};
+  }
+
   return (
     <div className="loginPage">
 
@@ -27,27 +53,21 @@ const Register = () => {
               <h1 className="creation-font">Création du compte</h1>
             </div>
             <div className="existing-account">
-              <h3>
                 <a className="existing-account-font" href="/login">Already has an account</a>
-              </h3>
             </div>
         </div>
 
-        <form>
-          <TextField placeholder='Nom' />
-          <TextField placeholder='Prénom' />
-          <TextField placeholder='Mail' />
-          <TextField type='password' placeholder='Mot de passe' />
-          <TextField type='password' placeholder='Confirmation mot de passe' />
-          <TextField placeholder='Téléphone' />
+        {error && <div id="error"><p>Cannot register !</p></div>}
+        <form onSubmit={onSubmit}>
+          <TextField placeholder='Nom' ref={ node => {input.lastname = node}}/>
+          <TextField placeholder='Prénom' ref={ node => {input.firstname = node}}/>
+          <TextField placeholder='Mail' ref={ node => {input.email = node}}/>
+          <TextField type='password' placeholder='Mot de passe' ref={ node => {input.password = node}}/>
+          <TextField type='password' placeholder='Confirmation mot de passe' ref={ node => {input.confirmPassword = node}}/>
+          <TextField placeholder='Téléphone' ref={ node => {input.phone = node}}/>
+          <button type="submit" className="button">Soumettre</button>
         </form>
-
-        <div id="button-container">
-          <input type="button" className="button" value="Soumettre"></input>
-        </div>
-
       </div>
-
       <Footer />
 
       <style jsx>{`
@@ -107,25 +127,23 @@ const Register = () => {
         a.existing-account-font:hover {
           text-decoration: underline;
         }
-        #button-container {
-          text-align:center;
-        }
+        
         .button {
           border-radius: 10px;
           background-color: #1aa7ff;
           border: none;
           color: black;
-          padding: 15px 32px;
           text-align: center;
           text-decoration: none;
-          display: inline-block;
           font-size: 16px;
-          margin: 4px 2px;
-          margin-bottom: 35px;
           width: 45%;
           height: 60px;
           cursor: pointer;
+          margin-right: auto;
+          margin-left: auto;
+          margin-bottom: 20px;
         }
+
         .button:hover {
           box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
         }
@@ -138,8 +156,16 @@ const Register = () => {
         }
 
         form {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
           margin-left: 5%;
           margin-right: 5%;
+        }
+
+        #error {
+          text-align: center;
+          color: red;
         }
       `}</style>
     </div>

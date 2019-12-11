@@ -20,6 +20,7 @@ const ImagedButton = ({ onClick, color = 'black', background = 'white', image, m
         background: ${background};
         color: ${color};
         border-radius: 10px;
+        border: none;
         transition: ease;
         transition-duration: 0.2s;
         box-shadow: 0px 0px 15px #00000029;
