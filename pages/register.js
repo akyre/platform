@@ -1,44 +1,53 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Nav from '../components/nav'
 import TextField from '../components/text-field'
 import ImagedButton from '../components/imaged-button'
 import Footer from '../components/footer'
-import {withApollo} from "../lib/apollo";
-import { useMutation } from '@apollo/react-hooks'
+import {withApollo} from "../lib/apollo"
+import cookie from 'cookie'
+import { useMutation, useApolloClient } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
-import Router from 'next/router'
 import redirect from '../lib/redirect'
-
-const ADD_USER = gql`
-  mutation SignUp($email: String!, $name: String!, $surname: String!, $password: String!, $phone: String!) {
-    signup(data: {email: $email, name: $name, surname: $surname, password: $password, phone: $phone}) {
-      token
-    }
-  }
-`
+import userRequests from '../graphql/user'
+import Checkbox from '../components/checkbox'
 
 const Register = (props) => {
   let input = {email: "", firstname: "", lastname: "", password: "", phone: ""};
-  const [signup, {data, loading, error}] = useMutation(ADD_USER);
+  const [signup] = useMutation(userRequests.add_user);
+  const client = useApolloClient();
+  const [checked, setChecked] = useState(false)
 
-  const onSubmit = e => {
-    e.preventDefault();
-    const res = signup({variables: {
+  const handleCheckbox = (input) => {
+    setChecked(!checked)
+  }
+
+  const handleSubmit = e => {
+    signup({variables: {
       email: input.email.value,
       name: input.firstname.value,
       surname: input.lastname.value,
       password: input.password.value,
-      phone: input.phone.value}});
+      phone: input.phone.value}})
+      .then(res => {
+        document.cookie = cookie.serialize('token', res.data.signup.token, {
+          sameSite: false,
+          path: '/',
+          maxAge: 24 * 60 * 60,
+        })
+
+        client.cache.reset().then(() => {
+          redirect({}, '/')
+        })
+      })
+      .catch(err => alert('Connexion echoue ${err}'));
     input = {email: "", firstname: "", lastname: "", password: "", phone: ""};
+    e.preventDefault();
   }
 
   return (
     <div className="loginPage">
-
       <Nav pageName="Register"/>
-
       <div className="loginForm">
-
         <div className="signs">
           <h2 className="signInWith">
             Sign in with:
@@ -57,14 +66,14 @@ const Register = (props) => {
             </div>
         </div>
 
-        {error && <div id="error"><p>Cannot register !</p></div>}
-        <form onSubmit={onSubmit}>
+        <form onSubmit={handleSubmit}>
           <TextField placeholder='Nom' ref={ node => {input.lastname = node}}/>
           <TextField placeholder='Prénom' ref={ node => {input.firstname = node}}/>
           <TextField placeholder='Mail' ref={ node => {input.email = node}}/>
           <TextField type='password' placeholder='Mot de passe' ref={ node => {input.password = node}}/>
           <TextField type='password' placeholder='Confirmation mot de passe' ref={ node => {input.confirmPassword = node}}/>
           <TextField placeholder='Téléphone' ref={ node => {input.phone = node}}/>
+          <Checkbox labelValue="I'm an expert" checked={checked} handleCheckbox={handleCheckbox}/>
           <button type="submit" className="button">Soumettre</button>
         </form>
       </div>
@@ -161,11 +170,6 @@ const Register = (props) => {
           justify-content: center;
           margin-left: 5%;
           margin-right: 5%;
-        }
-
-        #error {
-          text-align: center;
-          color: red;
         }
       `}</style>
     </div>

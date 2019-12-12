@@ -1,12 +1,12 @@
 import React from 'react'
-import Head from 'next/head'
 import Nav from '../components/nav'
-import InfoBox from '../components/infobox'
 import Footer from '../components/footer'
-import TextField from '../components/text-field'
 import MeetingList from '../components/meeting-list'
 import History from '../components/history'
 import Button from '../components/button'
+import redirect from '../lib/redirect'
+import checkLogged from '../lib/checkLogged'
+import { withApollo } from '../lib/apollo'
 
 const PersonalInfo = ({ user }) => (
   <div id="content">
@@ -54,15 +54,15 @@ const Settings = ({ user }) => {
         </span>
         <span className='label-data'>
           <label>Name: </label>
-          <p> {user.email}</p>
+          <p> {user.name}</p>
         </span>
         <span className='label-data'>
           <label>Pseudo: </label>
-          <p> {user.email}</p>
+          <p> {user.surname}</p>
         </span>
         <span className='label-data'>
           <label>Phone: </label>
-          <p> {user.email}</p>
+          <p> {user.phone}</p>
         </span>
         <h2>Information de paiement</h2>
         <span className='label-data'>
@@ -134,35 +134,42 @@ const Settings = ({ user }) => {
   )
 }
 
-const Dashboard = () => (
-  <div>
-    <Nav name="Home" user={{ name: 'roger' }} />
-    <div id='content'>
-      <PersonalInfo user={{ image: 'https://picsum.photos/200', name: 'Alexandre Fourcat' }} />
-      <div id='range-1'>
-        <MeetingList meetings={[1, 2, 3, 4, 5, 6, 7, 8, 9]} />
-        <Settings user={{ email: 'alexandre.fourcat@epitech.eu' }} />
-      </div>
-      <History history={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]} />
+const Dashboard = ({ loggedInUser }) => {
+    return (
+    <div>
+        <Nav pageName="Dashboard" user={{ name: loggedInUser.user.email }} />
+        <div id='content'>
+        <PersonalInfo user={{ image: 'https://picsum.photos/200', name: loggedInUser.user.name }} />
+        <div id='range-1'>
+            <MeetingList meetings={[1, 2, 3, 4, 5, 6, 7, 8, 9]} />
+            <Settings user={loggedInUser.user} />
+        </div>
+        <History history={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]} />
+        </div>
+        <Footer />
+        <style jsx>{`
+        #range-1 {
+            display: flex;
+            width: 90%;
+        }
+
+        #content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        `}</style>
     </div>
-    <Footer />
-    <style jsx>{`
-      #range-1 {
-        display: flex;
-        width: 90%;
-      }
-
-      #content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-    `}</style>
-  </div>
-)
-
-Dashboard.getInitialProps = () => {
-  return {}
+  );
 }
 
-export default Dashboard
+Dashboard.getInitialProps = async (context) => {
+  const { loggedInUser } = await checkLogged(context.apolloClient);
+
+  if (!loggedInUser.user) {
+    redirect({}, '/login');
+  }
+  return { loggedInUser }
+}
+
+export default withApollo(Dashboard)

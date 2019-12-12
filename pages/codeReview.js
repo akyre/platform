@@ -1,7 +1,7 @@
 import React from 'react'
-import Head from 'next/head'
 import Nav from '../components/nav'
 import Footer from '../components/footer'
+import { withApollo } from '../lib/apollo'
 
 const CodeReview = () => {
   return (
@@ -19,4 +19,4 @@ const CodeReview = () => {
   )
 }
 
-export default CodeReview
+export default withApollo(CodeReview)

@@ -4,25 +4,22 @@ import Nav from '../components/nav'
 import InfoBox from '../components/infobox'
 import Footer from '../components/footer'
 import InfoCard from '../components/infoCard'
-import TextField from '../components/text-field'
-import Expert from './expert'
-import SubTest from "../components/subTest";
+import checkLogged from '../lib/checkLogged'
+import { withApollo } from '../lib/apollo'
 
-const Home = () => (
+const Home = ({ loggedInUser }) => {
+  return (
   <div>
     <Head>
       <title>Home</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
-    <Nav name="Home" user={{ name: 'roger' }} />
+    {loggedInUser.user &&
+      <Nav user={{ name: loggedInUser.user.email }} /> ||
+      <Nav/>
+    }
     <InfoCard/>
     <div className="hero">
-      <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
-      <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
-      <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
-      <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
-      <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
-      <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
       <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
       <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
       <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
@@ -79,6 +76,13 @@ const Home = () => (
       }
     `}</style>
   </div>
-)
+  );
+}
 
-export default Home
+Home.getInitialProps = async (context) => {
+  const { loggedInUser } = await checkLogged(context.apolloClient);
+
+  return { loggedInUser }
+}
+
+export default withApollo(Home)

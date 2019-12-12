@@ -2,6 +2,7 @@ import React from 'react'
 import Nav from '../components/nav'
 import Footer from '../components/footer'
 import DevList from '../components/dev_list'
+import { withApollo } from '../lib/apollo'
 
 const Expert = () => {
   return (
@@ -53,4 +54,4 @@ const Expert = () => {
   )
 }
 
-export default Expert
+export default withApollo(Expert)

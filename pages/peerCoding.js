@@ -2,6 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import Nav from '../components/nav'
 import Footer from '../components/footer'
+import { withApollo } from '../lib/apollo'
 
 const PeerCoding = () => {
   return (
@@ -19,4 +20,4 @@ const PeerCoding = () => {
   )
 }
 
-export default PeerCoding
+export default withApollo(PeerCoding)
