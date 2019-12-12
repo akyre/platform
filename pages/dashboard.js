@@ -19,11 +19,13 @@ const PersonalInfo = ({ user }) => (
         align-items: center;
         margin-left: 5%;
       }
+
       p {
         margin-left: 20px;
         color: black;
         font-size: 50px;
       }
+
       #image {
         background-image: url("${user.image}");
         height: 100px;
@@ -96,7 +98,7 @@ const Settings = ({ user }) => {
         h2 {
           text-decoration: underline;
         }
-  
+
         .billing {
           display: flex;
           justify-content: space-between;
@@ -107,19 +109,19 @@ const Settings = ({ user }) => {
           font-weight: bold;
           font-size: 40px;
         }
-        
+
         #conteneur {
           display: flex;
           flex-direction: column;
           justify-content: space-around;
         }
-        
+
         p {
           margin-left: 10px;
           font-weight: lighter;
           font-size: 25px;
         }
-  
+
         #content {
           color: #000;
           background: #fff;
