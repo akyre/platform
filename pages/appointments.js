@@ -3,15 +3,14 @@ import Head from 'next/head'
 import Nav from '../components/nav'
 import Footer from '../components/footer'
 import ExpertCard from '../components/expert_card'
-import Calendar from 'rc-calendar'
 import moment from 'moment'
-import MeetingList from '../components/meeting-list'
+import { withApollo } from '../lib/apollo'
 
-const ExpertInfo = ({ user  }) => (
-    <div className='content'>
-        <div className='expertImage' />
-        <p>{user.username}</p>
-        <style jsx>{`
+const ExpertInfo = ({ user }) => (
+  <div className='content'>
+    <div className='expertImage' />
+    <p>{user.username}</p>
+    <style jsx>{`
             .content {
                 display: flex;
                 align-items: center;
@@ -40,75 +39,112 @@ const ExpertInfo = ({ user  }) => (
                 margin-right: 25px;
             }
         `}</style>
-    </div>
+  </div>
 )
 
-const AkyreCalendar = ({ date }) => {
-    const [ iDate, setDate ] = React.useState('')
+const Appointment = ({ date, hour, duration, taken, onClick }) => (
+  <div className="appointment" onClick={onClick}>
+    <span className='info'>
+      <label>Date:</label>
+      <div>{date}</div>
+    </span>
+    <span className='info'>
+      <label>Hour:</label>
+      <div>{hour}</div>
+    </span>
+    <span className='info'>
+      <label>Duration:</label>
+      <div>{duration}</div>
+    </span>
+    <style jsx>{`
+    .info label {
+      margin-right: 5px;
+      font-weight: bold;
+    }
 
-    return (
-        <div className='calendar'>
-            <Calendar
-                style={{ fontSize: '40px' }}
-                dateInputPlaceholder="Choissisez une date"
-                onChange={e => {
-                    setDate(JSON.stringify(e._d).split('T')[0])
-                }}
-            />
-            <style jsx>{`
-                .rc-calendar-column-header {
-                    margin: 20px;
-                }
+    .info div {
+      font-weight: lighter;
+    }
 
-                p {
-                    color: white;
-                }
+    .info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-                .calendar {
-                    padding: 20px;
-                    box-shadow: 0px 0px 15px #00000029;
-                    border-radius: 25px;
-                    background-color: #1aa7ff;
-                    height: 500px;
-                    width: 60%;
-                    margin: 20px;
-                }
-            `}</style>
-        </div>
-    )
+    .appointment {
+      font-size: 19px;
+      justify-content: space-around;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      margin: 20px;
+      border-radius: 25px;
+      width: 200px;
+      height: 200px;
+      background-color: ${ taken ? '#df4e64' : '#1aa7ff' };
+    }
+    `}</style>
+  </div>
+)
+
+const ExpertAppointments = ({ appointments }) => {
+  const sendApointementRequest = (app) => {
+    if (app.taken)
+      alert("Cannot take an appointment already taken")
+    else
+      alert("Appointment sended.")
+  }
+
+  appointments.sort((a, b) => a.taken - b.taken)
+  return (
+    <div className='card'>
+      <div className='title'>
+        Rendez vous
+      </div>
+      <div className='content'>
+        {
+          appointments.map((app, key) => (
+            <Appointment onClick={e => sendApointementRequest(app)} key={key} date={app.date} hour={app.hour} duration={app.duration} taken={app.taken} />
+          ))
+        }
+      </div>
+      <style jsx>{`
+        .title {
+          font-size: 25px;
+          font-weight: bold;
+          color: #272727;
+        }
+
+        .card {
+          width: 100%;
+          padding: 20px;
+          background-color: white;
+          box-shadow: 0px 0px 25px 0px #ccc;
+        }
+
+        .content {
+          max-width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-around;
+        }
+      `}</style>
+    </div>
+  )
 }
 
-const AkyreTimeSelector = ({ date }) => {
-    return (
-        <div className='content'>
-            <style jsx>{`
-            .content {
-                display: flex;
-                box-shadow: 0px 0px 15px #00000029;
-                flex-grow: 1;
-                background-color: #fff;
-                margin: 20px;
-                border-radius: 25px;
-
-            }
-            `}</style>
-        </div>
-    )
-}
-
-const Appointments = () => {
+const Appointments = (expert) => {
   return (
     <div>
       <Nav pageName="Appointments"/>
-      <ExpertInfo user={{ username: 'Jean-Michel Pastaga', image: 'https://picsum.photos/100'  }} />
+      <ExpertInfo user={{ username: 'Jean-Michel Pastaga', image: 'https://picsum.photos/100' }} />
       <div className='content'>
-        <AkyreCalendar />
-        <MeetingList meetings={[1, 2, 3, 4, 5, 6, 7, 8, 9]} />
+        <ExpertAppointments appointments={expert.appointments} />
       </div>
       <Footer />
       <style jsx>{`
         .content {
-            max-height: 600px;
             display: flex;
             margin-bottom: 20px;
             margin-left: auto;
@@ -125,4 +161,28 @@ const Appointments = () => {
   )
 }
 
-export default Appointments
+Appointments.getInitialProps = (ctx) => {
+  const expert = {
+    username: 'Jean Michel Pastaga',
+    image: 'https://picsum.photos/100',
+    appointments: [
+      { date: '14 Janvier 2020', hour: '17h30', duration: '30min', taken: true },
+      { date: '14 Janvier 2020', hour: '17h30', duration: '30min', taken: true },
+      { date: '14 Janvier 2020', hour: '17h30', duration: '30min', taken: false },
+      { date: '14 Janvier 2020', hour: '17h30', duration: '30min', taken: true },
+      { date: '14 Janvier 2020', hour: '17h30', duration: '30min', taken: true },
+      { date: '14 Janvier 2020', hour: '17h30', duration: '30min', taken: false },
+      { date: '14 Janvier 2020', hour: '17h30', duration: '30min', taken: false },
+      { date: '14 Janvier 2020', hour: '17h30', duration: '30min', taken: true },
+      { date: '14 Janvier 2020', hour: '17h30', duration: '30min', taken: true },
+      { date: '14 Janvier 2020', hour: '17h30', duration: '30min', taken: true },
+      { date: '14 Janvier 2020', hour: '17h30', duration: '30min', taken: false },
+      { date: '14 Janvier 2020', hour: '17h30', duration: '30min', taken: true },
+      { date: '17 Janvier 2020', hour: '15h00', duration: '45min', taken: true }
+    ],
+  };
+
+  return expert;
+}
+
+export default withApollo(Appointments)
