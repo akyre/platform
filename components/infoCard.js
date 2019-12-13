@@ -5,12 +5,12 @@ const Card = props => {
         <div className="card-item">
             <h4 className="title">{props.title}</h4>
             <div className="image">
-                <img src="/image_10.png"/>
+                <img src="/Image_10.png"/>
             </div>
             <p>
                 {props.children}
             </p>
-            <button>{props.button}</button>
+            <a href={props.href}>{props.button}</a>
             <style jsx>{`
                 @import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap');
 
@@ -30,7 +30,7 @@ const Card = props => {
                     font-style: italic;
                 }
 
-                button {
+                a {
                     width: 200px;
                     height: 50px;
                     border-radius: 16px;
@@ -44,9 +44,11 @@ const Card = props => {
                     margin-left: auto;
                     margin-right: auto;
                     margin-bottom: 10px;
+                    line-height: 50px;
+                    text-align: center;
                 }
 
-                button:hover {
+                a:hover {
                     background-color: #626262;
                     color: white;
                     margin-left: auto;
@@ -84,15 +86,9 @@ const InfoCard = () => {
         <div className="services">
             <h3 className="main-title">Nos services</h3>
             <div className="card-container">
-                <Card className="card" title="Analyse" button="En savoir plus"> This is the content of the card, Call History Manager keep your call history forever and list them category wise for ease of access. Quick and advanced search options helps you to easily access data you are looking for. 
-
-Call History Manager allows you to export calls to excel file. This app can backup your logs and restore them on same phone or other. There is a useful statistics page to give you more insight about calls you are making/receiving.  </Card>
-                <Card className="card" title="Benchmarking" button="En développement..."> This is the content of the card, more details, Call History Manager keep your call history forever and list them category wise for ease of access. Quick and advanced search options helps you to easily access data you are looking for. 
-
-Call History Manager allows you to export calls to excel file. This app can backup your logs and restore them on same phone or other. There is a useful statistics page to give you more insight about calls you are making/receiving. </Card>
-                <Card className="card" title="Peer coding" button="En développement..."> This is the content of the card with more details. Call History Manager keep your call history forever and list them category wise for ease of access. Quick and advanced search options helps you to easily access data you are looking for. 
-
-Call History Manager allows you to export calls to excel file. This app can backup your logs and restore them on same phone or other. There is a useful statistics page to give you more insight about calls you are making/receiving. </Card>
+                <Card className="card" title="Code review" button="En savoir plus" href="/codeReview">Le service de code-review vous permet d’obtenir des conseils personnalisés et accessibles sur vos projets de développement. Ce service garantit une mise en relation rapide avec l’un de nos experts qui pourra ainsi vous conseiller et vous accompagner dans votre projet...</Card>
+                <Card className="card" title="Benchmarking" button="En développement..." href="/codeBenchmarking">Le service de benchmark de code a pour vocation de fournir une vision étendue des performances de son code. Nous fournissons des données en temps réel sur la vitesse d'exécution de votre code avec pour principal objectif l'identification des faiblesses de votre architecture...</Card>
+                <Card className="card" title="Code analytics" button="En développement..." href="/codeAnalytics">L'analyse de votre projet vise à vous fournir un récapitulatif des améliorations pouvant être apportées à votre projet. Ces améliorations se basent sur les bonnes pratiques de programmation identifiées par notre intelligence artificielle et ont pour but de rendre votre code plus lisible, maintenable et modulable.</Card>
             </div>
             <style jsx>{`
                 .card-container {
@@ -100,6 +96,7 @@ Call History Manager allows you to export calls to excel file. This app can back
                     justify-content: space-between;
                     margin-left: 5%;
                     margin-right: 5%;
+                    margin-bottom: 50px;
                     color: black;
                 }
 

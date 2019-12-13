@@ -19,15 +19,6 @@ const Home = ({ loggedInUser }) => {
       <Nav/>
     }
     <InfoCard/>
-    <div className="hero">
-      <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
-      <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
-      <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
-      <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
-      <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
-      <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
-      <InfoBox title={'Test'} content={'Bonjour 123'} p={2} m={2} button={'more'} />
-    </div>
     <Footer />
     <style jsx>{`
       .hero {
