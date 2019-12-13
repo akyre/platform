@@ -12,7 +12,7 @@ import userRequests from '../graphql/user'
 import Checkbox from '../components/checkbox'
 
 const Register = (props) => {
-  let input = {email: "", firstname: "", lastname: "", password: "", phone: ""};
+  let input = {email: "", firstname: "", lastname: "", password: "", phone: "", work: "", price: ""};
   const [signup] = useMutation(userRequests.add_user);
   const client = useApolloClient();
   const [checked, setChecked] = useState(false)
@@ -74,6 +74,11 @@ const Register = (props) => {
           <TextField type='password' placeholder='Confirmation mot de passe' ref={ node => {input.confirmPassword = node}}/>
           <TextField placeholder='Téléphone' ref={ node => {input.phone = node}}/>
           <Checkbox labelValue="I'm an expert" checked={checked} handleCheckbox={handleCheckbox}/>
+          {checked && <>
+            <TextField placeholder='Poste occupé' ref={ node => {input.work = node}}/>
+            <TextField placeholder='Prix' ref={ node => {input.price = node}}/>
+            </>
+          }
           <button type="submit" className="button">Soumettre</button>
         </form>
       </div>
