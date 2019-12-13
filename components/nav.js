@@ -1,5 +1,9 @@
 import React from 'react'
 import Link from 'next/link'
+import Account from '../components/account'
+import { useApolloClient } from '@apollo/react-hooks'
+import cookie from 'cookie'
+import redirect from '../lib/redirect'
 
 const links = [
   { href: '#', label: 'Products', sublinks: [
@@ -8,14 +12,24 @@ const links = [
       { href: '/codeBenchmarking', label: 'Code Benchmarking'},
       { href: '/codeAnalytics', label: 'Code Analytics'},
   ]},
-  { href: '/', label: 'Partners', sublinks: [] },
+  { href: '/expert', label: 'Experts', sublinks: [] },
   { href: '/community', label: 'Community', sublinks: [] },
   { href: '/pricing', label: 'Pricing', sublinks: [] },
-  { href: '/dashboard', label: 'Dashboard', sublinks: [] },
-  { href: '/expert', label: 'Expert', sublinks: [] },
 ]
 
-const Nav = ({ pageName, user }) => (
+const Nav = ({ pageName, user }) => {
+  const client = useApolloClient();
+
+  const signout = () => {
+    document.cookie = cookie.serialize('token', '', {
+      maxAge: -1,
+    })
+    client.cache.reset().then(() => {
+      redirect({}, '/');
+    })
+  }
+
+  return (
   <nav>
     <div id="main">
       <div id="nav-bar">
@@ -46,14 +60,17 @@ const Nav = ({ pageName, user }) => (
               }
             })}
           </ul>
-          <ul id="connection">
-            <li><a className="connect" id="sign-in" href="/login">Sign in</a></li>
-            <li><a className="connect" id="sign-up" href="/register">Sign up</a></li>
-          </ul>
+          {!user &&
+            <ul id="connection">
+              <li><a className="connect" id="sign-in" href="/login">Sign in</a></li>
+              <li><a className="connect" id="sign-up" href="/register">Sign up</a></li>
+            </ul> ||
+            <Account username={user} signout={signout}/>
+          }
         </div>
       </div>
       <div id="title">
-        {user &&
+        {!pageName &&
           <div>
             <h4 id="main-title">Talk is cheap show me the code.</h4>
             <p id="sub-title">(cf. Linus Torvald)</p>
@@ -267,6 +284,7 @@ const Nav = ({ pageName, user }) => (
       }
    `}</style>
   </nav>
-)
+  );
+}
 
 export default Nav

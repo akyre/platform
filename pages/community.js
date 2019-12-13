@@ -1,7 +1,7 @@
 import React from 'react'
-import Head from 'next/head'
 import Nav from '../components/nav'
 import Footer from '../components/footer'
+import { withApollo } from '../lib/apollo'
 
 const Community = () => {
   return (
@@ -19,4 +19,4 @@ const Community = () => {
   )
 }
 
-export default Community
+export default withApollo(Community)

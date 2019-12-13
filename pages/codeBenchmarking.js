@@ -1,7 +1,7 @@
 import React from 'react'
-import Head from 'next/head'
 import Nav from '../components/nav'
 import Footer from '../components/footer'
+import { withApollo } from '../lib/apollo'
 
 const CodeBenchmarking = () => {
   return (
@@ -19,4 +19,4 @@ const CodeBenchmarking = () => {
   )
 }
 
-export default CodeBenchmarking
+export default withApollo(CodeBenchmarking)

@@ -3,8 +3,35 @@ import Nav from '../components/nav'
 import TextField from '../components/text-field'
 import ImagedButton from '../components/imaged-button'
 import Footer from '../components/footer'
+import userRequests from '../graphql/user'
+import { useMutation, useApolloClient } from '@apollo/react-hooks'
+import { withApollo } from '../lib/apollo'
 
 const Login = () => {
+  let input = {email: '', password: ''};
+  const [login] = useMutation(userRequests.login);
+  const client = useApolloClient();
+
+  const handleSubmit = e => {
+    login({variables: {
+      email: input.email.value,
+      password: input.password.value}})
+      .then(res => {
+        document.cookie = cookie.serialize('token', res.data.signup.token, {
+          sameSite: false,
+          path: '/',
+          maxAge: 24 * 60 * 60,
+        })
+
+        client.cache.reset().then(() => {
+          redirect({}, '/')
+        })
+      })
+      .catch(err => alert('Connexion echoue ${err}'));
+    input = {email: "", password: ""};
+    e.preventDefault();
+  }
+
   return (
     <div className="loginPage">
 
@@ -22,15 +49,13 @@ const Login = () => {
           </div>
         </div>
 
-        <form>
-          <TextField placeholder='Username' />
-          <TextField placeholder='Password' />
+        <form onSubmit={handleSubmit}>
+          <TextField placeholder='Email' ref={ node => {input.email = node}}/>
+          <TextField placeholder='Password' ref={node => {input.password = node}}/>
+          <div id="button-container">
+            <button type="submit" className="button">Soumettre</button>
+          </div>
         </form>
-
-        <div id="button-container">
-          <input type="button" className="button" value="Soumettre"></input>
-        </div>
-
       </div>
 
       <Footer />
@@ -99,4 +124,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default withApollo(Login)

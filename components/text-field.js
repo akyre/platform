@@ -1,18 +1,18 @@
-import React from 'react'
+import React, { useRef } from 'react'
 
-const TextField = ({ value, label, onChange, type = 'text', width = '100%', placeholder }) => {
+const TextField = React.forwardRef((props, ref) => {//( value, label, onChange, type = 'text', width = '100%', placeholder , ref) => {
   return (
     <div id="box">
-      {label &&
+      {props.label &&
         <label>
-          {label}
+          {props.label}
         </label>
       }
-      <input type={type} value={value} placeholder={placeholder} />
+      <input type={props.type || 'text'} value={props.value} placeholder={props.placeholder} ref={ref}/>
       <style jsx>{`
         #box {
           font-family: Roboto;
-          width: ${width};
+          width: ${props.width || "100%"};
           font-size: 20px;
           display: flex;
           flex-direction: column;
@@ -41,6 +41,6 @@ const TextField = ({ value, label, onChange, type = 'text', width = '100%', plac
       `}</style>
     </div>
   )
-}
+});
 
 export default TextField;

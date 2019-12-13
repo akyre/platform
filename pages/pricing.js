@@ -2,6 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import Nav from '../components/nav'
 import Footer from '../components/footer'
+import { withApollo } from '../lib/apollo'
 
 const Pricing = () => {
   return (
@@ -19,4 +20,4 @@ const Pricing = () => {
   )
 }
 
-export default Pricing
+export default withApollo(Pricing)
