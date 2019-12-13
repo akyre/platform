@@ -80,8 +80,8 @@ const Appointment = ({ date, hour, duration, taken, onClick }) => (
       flex-direction: column;
       margin: 20px;
       border-radius: 25px;
-      width: 200px;
-      height: 200px;
+      min-width: 200px;
+      min-height: 200px;
       background-color: ${ taken ? '#df4e64' : '#1aa7ff' };
     }
     `}</style>
@@ -126,8 +126,7 @@ const ExpertAppointments = ({ appointments }) => {
         .content {
           max-width: 100%;
           display: flex;
-          flex-wrap: wrap;
-          justify-content: space-around;
+          overflow-x: scroll;
         }
       `}</style>
     </div>
