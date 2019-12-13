@@ -7,10 +7,10 @@ import redirect from '../lib/redirect'
 
 const links = [
   { href: '#', label: 'Products', sublinks: [
-      { href: '/codeReview', label: 'Code Review'},
-      { href: '/peerCoding', label: 'Peer Coding'},
-      { href: '/codeBenchmarking', label: 'Code Benchmarking'},
-      { href: '/codeAnalytics', label: 'Code Analytics'},
+    { href: '/codeReview', label: 'Code Review'},
+    { href: '/peerCoding', label: 'Peer Coding'},
+    { href: '/codeBenchmarking', label: 'Code Benchmarking'},
+    { href: '/codeAnalytics', label: 'Code Analytics'},
   ]},
   { href: '/expert', label: 'Experts', sublinks: [] },
   { href: '/community', label: 'Community', sublinks: [] },
@@ -81,7 +81,7 @@ const Nav = ({ pageName, user }) => {
     </div>
     <style jsx>{`
       @import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap');
-      
+
       :global(body) {
         margin: 0;
         font-family: -apple-system, Roboto, Avenir Next, Avenir, Helvetica, sans-serif;

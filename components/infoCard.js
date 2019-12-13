@@ -18,8 +18,9 @@ const Card = props => {
                     display: flex;
                     justify-content: space-between;
                     flex-direction: column;
-                    width: 350px;
+                    width: 500px;
                     box-shadow: 0px 0px 25px 0px #ccc;
+                    background-color: white;
                 }
 
                 .title {
@@ -43,7 +44,7 @@ const Card = props => {
                     display: block;
                     margin-left: auto;
                     margin-right: auto;
-                    margin-bottom: 10px;
+                    margin-bottom: 30px;
                     line-height: 50px;
                     text-align: center;
                 }
@@ -70,7 +71,7 @@ const Card = props => {
 
                 p {
                     text-align: center;
-                    font-size: 15px;
+                    font-size: 20px;
                     font-family: 'Roboto', sans-serif;
                     font-weight: 300;
                     margin-left: 30px;

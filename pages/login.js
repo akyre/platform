@@ -51,7 +51,7 @@ const Login = () => {
 
         <form onSubmit={handleSubmit}>
           <TextField placeholder='Email' ref={ node => {input.email = node}}/>
-          <TextField placeholder='Password' ref={node => {input.password = node}}/>
+          <TextField type='password' placeholder='Password' ref={node => {input.password = node}}/>
           <div id="button-container">
             <button type="submit" className="button">Soumettre</button>
           </div>
