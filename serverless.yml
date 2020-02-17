@@ -1,0 +1,7 @@
+
+akyre-website:
+  component: serverless-next.js
+  inputs:
+    domain:
+      - kyre.io
+
