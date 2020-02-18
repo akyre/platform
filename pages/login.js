@@ -4,6 +4,7 @@ import TextField from '../components/text-field'
 import ImagedButton from '../components/imaged-button'
 import Footer from '../components/footer'
 import userRequests from '../graphql/user'
+import Head from 'next/head'
 import { useMutation, useApolloClient } from '@apollo/react-hooks'
 import { withApollo } from '../lib/apollo'
 
@@ -34,6 +35,10 @@ const Login = () => {
 
   return (
     <div className="loginPage">
+      <Head>
+        <title>Login</title>
+        <link rel="icon" href="/icon.svg" />
+      </Head>
 
       <Nav pageName="Login"/>
 

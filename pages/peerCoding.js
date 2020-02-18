@@ -8,6 +8,10 @@ import InfoBox from '../components/infobox'
 const PeerCoding = () => {
   return (
     <div>
+      <Head>
+        <title>Peer coding</title>
+        <link rel="icon" href="/icon.svg" />
+      </Head>
       <Nav pageName="Peer Coding"/>
       <div id="box">
         <InfoBox title="Présentation" content="La fonctionnalité de peer coding a été conçue afin de de vous aider dans le développement de votre projet. Il peut être nécessaire de travailler à plusieurs sur une partie complexe de son projet et ainsi de déléguer des parcelles de son travail à l'expert le plus compétent."/>

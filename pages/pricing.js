@@ -7,6 +7,10 @@ import { withApollo } from '../lib/apollo'
 const Pricing = () => {
   return (
     <div>
+      <Head>
+        <title>Pricing</title>
+        <link rel="icon" href="/icon.svg" />
+      </Head>
       <Nav pageName="Pricing"/>
       <p>This page is under construction...</p>
       <Footer />

@@ -12,7 +12,7 @@ const Home = ({ loggedInUser }) => {
   <div>
     <Head>
       <title>Home</title>
-      <link rel="icon" href="/favicon.ico" />
+      <link rel="icon" href="/icon.svg" />
     </Head>
     {loggedInUser.user &&
       <Nav user={{ name: loggedInUser.user.email }} /> ||

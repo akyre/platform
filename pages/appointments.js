@@ -136,6 +136,10 @@ const ExpertAppointments = ({ appointments }) => {
 const Appointments = (expert) => {
   return (
     <div>
+      <Head>
+        <title>Rendez vous</title>
+        <link rel="icon" href="/icon.svg" />
+      </Head>
       <Nav pageName="Appointments"/>
       <ExpertInfo user={{ username: 'Jean-Michel Pastaga', image: 'https://picsum.photos/100' }} />
       <div className='content'>

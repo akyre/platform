@@ -4,6 +4,7 @@ import Footer from '../components/footer'
 import MeetingList from '../components/meeting-list'
 import History from '../components/history'
 import Button from '../components/button'
+import Head from 'next/head'
 import redirect from '../lib/redirect'
 import checkLogged from '../lib/checkLogged'
 import { withApollo } from '../lib/apollo'
@@ -47,6 +48,10 @@ const PersonalInfo = ({ user }) => (
 const Settings = ({ user }) => {
   return (
     <div id='content'>
+      <Head>
+        <title>Tableau de bord</title>
+        <link rel="icon" href="/icon.svg" />
+      </Head>
       <div id='title'>Informations</div>
       <div id='conteneur'>
         <h2>Information personelle</h2>

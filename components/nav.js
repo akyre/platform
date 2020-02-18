@@ -34,7 +34,7 @@ const Nav = ({ pageName, user }) => {
     <div id="main">
       <div id="nav-bar">
         <Link href="/">
-          <img src="/logo_full.png" id="logo"></img>
+          <img src="/logo.svg" id="logo"></img>
         </Link>
         <div id="text">
           <ul>
