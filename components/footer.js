@@ -8,7 +8,7 @@ const list = [
 
 const Footer = () => (
   <div id="footer">
-    <img src="logo-brain.png" id="image" />
+    <img src="logo_thin.png" id="image" />
     <div id="content">
       {list.map(content => (
         <ul key={'footer-ul' + content[0]}>

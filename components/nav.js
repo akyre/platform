@@ -34,7 +34,7 @@ const Nav = ({ pageName, user }) => {
     <div id="main">
       <div id="nav-bar">
         <Link href="/">
-          <img src="/logo-brain.png" id="logo"></img>
+          <img src="/logo_full.png" id="logo"></img>
         </Link>
         <div id="text">
           <ul>
@@ -90,8 +90,8 @@ const Nav = ({ pageName, user }) => {
 
       #logo {
         padding: 20px;
-        width: 100px;
-        height: 100px;
+        width: 300px;
+        height: 90px;
       }
 
       #main {
@@ -157,6 +157,7 @@ const Nav = ({ pageName, user }) => {
       }
 
       h4 {
+        color: #91afff
         font-family: Roboto;
         font-style: italic;
         font-weight: 100;
@@ -227,7 +228,7 @@ const Nav = ({ pageName, user }) => {
       }
 
       .drop-btn {
-        color: #fff;
+        color: #91afff;
         text-decoration: none;
         font-style: italic;
         font-weight: 300;
