@@ -1,0 +1,21 @@
+image: node:latest
+
+stages:
+  - test
+  - deploy
+
+test:
+  stage: test
+  before_script:
+    - npm install
+  script:
+    - npm run test
+
+
+production:
+  stage: deploy
+  before_script:
+    - npm config set prefix /usr/local
+    - npm install -g serverless
+  script:
+    - serverless
